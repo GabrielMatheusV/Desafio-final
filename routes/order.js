@@ -7,7 +7,7 @@ const {
 
 const router = require("express").Router();
 
-//CREATE
+
 
 router.post("/", verifyToken, async(req, res) => {
     const newOrder = new Order(req.body);
@@ -20,7 +20,6 @@ router.post("/", verifyToken, async(req, res) => {
     }
 });
 
-//UPDATE
 router.put("/:id", verifyTokenAndAdmin, async(req, res) => {
     try {
         const updatedOrder = await Order.findByIdAndUpdate(
@@ -34,7 +33,7 @@ router.put("/:id", verifyTokenAndAdmin, async(req, res) => {
     }
 });
 
-//DELETE
+
 router.delete("/:id", verifyTokenAndAdmin, async(req, res) => {
     try {
         await Order.findByIdAndDelete(req.params.id);
@@ -44,7 +43,7 @@ router.delete("/:id", verifyTokenAndAdmin, async(req, res) => {
     }
 });
 
-//GET USER ORDERS
+
 router.get("/find/:userId", verifyTokenAndAuthorization, async(req, res) => {
     try {
         const orders = await Order.find({ userId: req.params.userId });
@@ -54,7 +53,7 @@ router.get("/find/:userId", verifyTokenAndAuthorization, async(req, res) => {
     }
 });
 
-//GET ALL
+
 
 router.get("/", verifyTokenAndAdmin, async(req, res) => {
     try {
@@ -65,7 +64,6 @@ router.get("/", verifyTokenAndAdmin, async(req, res) => {
     }
 });
 
-// GET MONTHLY INCOME
 
 router.get("/income", verifyTokenAndAdmin, async(req, res) => {
     const date = new Date();
