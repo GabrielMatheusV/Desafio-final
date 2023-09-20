@@ -16,7 +16,7 @@ dotenv.config();
 const mongo = process.env.MONGO_URL;
 
 mongoose.connect(
-        "mongodb+srv://tamilore:ayobami20@ecommerce.dcz858w.mongodb.net/shoppla",
+    `mongodb+srv://${DB_USER}:${DB_PASS}@ecommerce.dcz858w.mongodb.net/shoppla`,
         {useNewUrlParser: true,
         useUnifiedTopology:true
     }
